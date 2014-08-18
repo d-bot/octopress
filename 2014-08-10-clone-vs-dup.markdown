@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-From http://aaronlasseigne.com/2014/07/16/know-ruby-clone-and-dup/
+[참고](http://aaronlasseigne.com/2014/07/16/know-ruby-clone-and-dup/)
 
 기본적으로 거의 같으나 clone 이 dup 에 비해서 기능이 몇개 더 있음.
 

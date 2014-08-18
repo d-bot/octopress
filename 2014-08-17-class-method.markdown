@@ -6,6 +6,8 @@ comments: true
 categories: 
 ---
 
+In order to save configurations, class valuables and methods should be used. [Also see #4](http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/)
+
 ```ruby
 class MyApp
 
@@ -30,9 +32,6 @@ class Post < ActiveRecord::Base
  belongs_to :user
 end
 ```
-in order to save configurations, class valuables and methods should be used
-Also see #4: http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/
-
 
 클래스 메소드는 생성자 함수가 될수 있나? rackup 이 실행되는것을 보면 좀 이해가 되는듯
 

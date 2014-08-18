@@ -5,7 +5,7 @@ date: 2014-08-10 09:44:10 +0000
 comments: true
 categories: shorthand
 ---
-From http://www.toptal.com/ruby/interview-questions
+[참고](http://www.toptal.com/ruby/interview-questions)
 
 ```ruby
 list = ["ship", "airplane", "bus"]

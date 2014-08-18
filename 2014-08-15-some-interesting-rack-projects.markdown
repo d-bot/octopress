@@ -6,6 +6,6 @@ comments: true
 categories: 
 ---
 
-* Rack Profile: https://github.com/ddollar/rack-profile
-* Rack Cache: https://github.com/rtomayko/rack-cache
-* Rack Rewrite: https://github.com/jtrupiano/rack-rewrite
+* [Rack Profile](https://github.com/ddollar/rack-profile)
+* [Rack Cache](https://github.com/rtomayko/rack-cache)
+* [Rack Rewrite](https://github.com/jtrupiano/rack-rewrite)

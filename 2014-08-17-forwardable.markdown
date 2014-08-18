@@ -6,7 +6,7 @@ comments: true
 categories: Forwardable
 ---
 
-# http://oneofthesedaysblog.com/ruby-day-4-forwardable
+[참고](http://oneofthesedaysblog.com/ruby-day-4-forwardable)
 
 Forwardable 은 기본적으로 다른 객체의 함수들을 wrapping 할때 사용되며, 함수의 추상화 레벨을 구현하게 해준다. (Forwardable is not a class. It's a module so you can extend or include it).
 

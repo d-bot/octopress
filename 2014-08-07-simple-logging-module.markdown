@@ -6,6 +6,8 @@ comments: true
 categories: Singleton
 ---
 
+간단한 로깅 모듈. 특별한것은 없고 Singleton 클래스를 이용해서 글로벌한 하나의 객체를 이용하여 어디서든 해당 모듈을 include 하여 사용 가능하도록 구현.
+
 ```ruby
 require 'singleton'
 module Logging
@@ -36,4 +38,3 @@ module Logging
 end
 ```
 
-간단한 로깅 모듈. 특별한것은 없고 Singleton 클래스를 이용해서 글로벌한 하나의 객체를 이용하여 어디서든 해당 모듈을 include 하여 사용 가능하도록 구현.
