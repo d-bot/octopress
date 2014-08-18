@@ -8,7 +8,7 @@ categories:
 
 [참고](http://m.onkey.org/ruby-on-rack-2-the-builder)
 
-## `rackup` 은 .ru 파일을 Rack::Builder 객체로 변경
+## `rackup` == `Rack::Builder.new`
 
 ### What is Rack::Builder ?
 Rack::Builder 는 다양한 Rack middleware 들과 application 들을 합쳐서 single entity/rack application 으로 변경(convert) 시키는 클래스이다.
@@ -36,6 +36,7 @@ Rack::Handler::WEBrick.run builder, :Port => 9292
 
 ```ruby
 infinity = Proc.new { |env| [200, {"Content-Type" => "text/html"}, env.inspect }
+
 builder = Rack::Builder.new do
 	run infinity
 end
@@ -130,7 +131,7 @@ rack_application = eval("Rack::Builder.new { #{config_file} }")
 Rack::Handler::WEBrick.run rack_application, options
 ```
 
-결론은 rack config files(.ru) 들은 Rack::Builder 객체의 context 로 evaluate 된다. 즉, infinity 를 `rackup` 스크립트가 이해할수 있는 rack config file(.ru) 로 변경하면 아래와 같다.
+즉, rack config files(.ru) 들은 Rack::Builder 객체의 context 로 evaluate 된다. 즉, infinity 는 `rackup` 스크립트가 이해할수 있는 rack config file(.ru) 로 변경하면 아래와 같다. (`Rack::Builder.new 가 받는 블락의 내용이 됨)
 
 ```ruby
 # infinity.ru
@@ -159,5 +160,7 @@ end
 ```
 $ rackup infinity.ru
 ```
+
+## 결국 `rackup` 은 `Rack::Builder.new` 이다. Rack::Builder 객체로 만들어 SERVER 에 넘김.
 
 
