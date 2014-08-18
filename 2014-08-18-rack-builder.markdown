@@ -6,7 +6,8 @@ comments: true
 categories: 
 ---
 
-[참고](http://m.onkey.org/ruby-on-rack-2-the-builder)
+[Rack::Builder](http://m.onkey.org/ruby-on-rack-2-the-builder)
+[rackup](https://github.com/rack/rack/wiki/%28tutorial%29-rackup-howto)
 
 ## `rackup` == `Rack::Builder.new`
 
