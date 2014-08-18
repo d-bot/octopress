@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Rack Builder"
+title: "Rack Builder (Run, Use and Map)"
 date: 2014-08-18 06:57:10 +0000
 comments: true
 categories: 
@@ -8,24 +8,21 @@ categories:
 
 [참고](http://m.onkey.org/ruby-on-rack-2-the-builder)
 
-결론부터 말하면 `rackup` 스크립트는 .ru 파일을 Rack::Builder 클래스의 객체로 변경(convert) 한다.
+## `rackup` 은 .ru 파일을 Rack::Builder 객체로 변경
 
 ### What is Rack::Builder ?
-: Rack::Builder 는 다양한 Rack middleware 들과 application 들을 합쳐서 single entity/rack application 으로 변경(convert) 시키는 클래스이다.
+Rack::Builder 는 다양한 Rack middleware 들과 application 들을 합쳐서 single entity/rack application 으로 변경(convert) 시키는 클래스이다.
 
-Rack::Builder 객체는 stack (가장 밑이 실제 rack application 이고 그위는 middleware 들이고 whole stack itself 역시 rack application) 과 유사하다.
+Rack::Builder 객체는 stack (맨밑이 rack application 이고 그위로는 middleware 들이고 whole stack itself 역시 rack application) 과 유사하다.
 
-아래와 같이 infinity application 이라는 env 해쉬를 브라우저로 리턴해 주는 어플리케이션이 있을때
+아래의 infinity application 이라는 env 해쉬를 브라우저로 리턴해 주는 어플리케이션을 예로 들면,
 ```ruby
 infinity = lambda { |env| ["200", {"Content-Type" => "text/html"}, env.inspect }
 Rack::Handler::WEBrick.run infinity, :Port => 9292
 ```
 
-### 여기서 3가지 중요한 Rack::Builder 의 instance methods
-
-#### Rack::Builder#run
-* Rack::Build 클래스로 wrapping 하는 실제 rack application 을 명시(specify) 한다.
-* infinity 객체를 Rack::Builder 객체로 변경한다. (아래 코드 참고)
+### Rack::Builder#run
+실제 infinity 객체를 Rack::Builder 객체로 변경(wrapping)하는 함수이다. (아래 코드 참고)
 
 ```ruby
 infinity = Proc.new { |env| [200, {"Content-Type" => "text/html"}, env.inspect }
