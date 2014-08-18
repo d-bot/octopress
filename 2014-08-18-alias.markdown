@@ -1,0 +1,71 @@
+---
+layout: post
+title: "Alias"
+date: 2014-08-18 00:29:59 +0000
+comments: true
+categories: 
+---
+
+기본적으로 이미 존재하는 함수(method1)를 alias 를 이용해서 다른 이름으로 백업해 놓고 method1 을 재정의하는 기능
+
+```ruby
+# 이미 존재하는 method1 를 method2 라는 이름으로 복사/백업해 놓고 method1 을 재정의
+alias :method2 :method1
+
+def method1
+	# something new
+end
+```
+
+From http://ruby.about.com/od/rubyfeatures/a/aliasing.htm
+가끔 이미 선언/정의된 클래스의 behavior 를 변경해야할때가 있는데 이럴때 해당 클래스를 재정의/재선언하면서 새로운 함수를 추가하고 alias 를 걸수 있다.
+
+함수의 alias 를 생성하여 원래 이름과 동일한 이름의 새로운 함수를 생성하고 해당 함수를 alias 로 호출함으로서 클래스의 전체적인 스펙(behavior) 변경이 가능하다.
+
+
+아래 예제에서 Microwave 클래스가 선언되고 객체가 생성된다.
+그리고 Microwave 를 alias 함수를 이용해서 on 함수에 warning message 를 추가하여 behavior 를 재정의한다.
+그리고 세번제 클래스 재정의는 해당 warning message 를 좀 더 엄격하게 재정의 하기 위하여 사용되었다.
+
+alias 를 여러번 사용할때는 old method 를 저장하기 위해서 항상 다른 이름을 반드시 사용해 줘야 한다.
+
+```ruby
+class Microwave
+	def on
+		puts "Microwave is on"
+	end
+end
+
+m = Microwave.new
+m.on
+
+class Microwave
+	alias :old_on1 :on
+
+	def on
+		puts "Warning: Do not insert metal objects!"
+		old_on1
+	end
+end
+
+m.on
+
+# Message for this specific microwave
+
+class <<m
+	alias :old_on2 :on
+
+	def on
+		puts "This microwave is weak, add extra time"
+		old_on2
+	end
+end
+
+m.on # Display extra message
+
+m2 = Microwave.new
+m2.on # Does not display extra message
+
+```
+
+
