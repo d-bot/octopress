@@ -132,7 +132,7 @@ rack_application = eval("Rack::Builder.new { #{config_file} }")
 Rack::Handler::WEBrick.run rack_application, options
 ```
 
-즉, rack config files(.ru) 들은 Rack::Builder 객체의 context 로 evaluate 된다. 즉, infinity 는 `rackup` 스크립트가 이해할수 있는 rack config file(.ru) 로 변경하면 아래와 같다. (`Rack::Builder.new 가 받는 블락의 내용이 됨)
+즉, rack config files(.ru) 들은 Rack::Builder 객체의 context 로 evaluate 된다. 즉, infinity 는 `rackup` 스크립트가 이해할수 있는 rack config file(.ru) 로 변경하면 아래와 같다. (`Rack::Builder.new` 가 받는 블락의 내용이 됨, `app = Rack::Builder.new { ... config ... }.to_app`)
 
 ```ruby
 # infinity.ru
@@ -164,4 +164,21 @@ $ rackup infinity.ru
 
 ## 결국 `rackup` 은 `Rack::Builder.new` 이다. Rack::Builder 객체로 만들어 SERVER 에 넘김.
 
+```ruby
+app = Rack::Builder.new { ... config ... }.to_app
+```
+
+### Auto-Selection of a Server
+
+The specified server (from Handler.get) is used, or the first of below to match
+* REQUEST_METHOD is in the process environment, use CGI
+* Mongrel is installed, use it
+* Otherwise, WEBrick
+
+### Automatic Middleware
+
+`rackup` 은 지정된 환경(environemnt)에 따라 자동으로 몇개의 미들웨어를 사용한다. `-E` with `development` 가 디폴트 설정.
+* development: CommonLogger, ShowExceptions, Lint
+* deploymnet: CommonLogger
+* none: none
 
