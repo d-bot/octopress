@@ -4,8 +4,10 @@ title: "Interface"
 date: 2014-08-20 05:03:08 +0000
 comments: true
 categories:
-published: false
+#published: false
 ---
+From PooD book
+
 ## Flexible Interface
 
 인터페이스에는 2가지 종류가 있는데 하나는 다른 객체들에 의해 사용되는 public methods 들이고 다른 하나는 public methods 들에 의해 사용되는 private methods 들이다.
@@ -25,6 +27,7 @@ published: false
 ### Context Independence (easier to test and re-use)
 
 각 클래스들은 다른 클래스들의 interface 에 대해 독립적이어야 한다. (p106 이해가 안간다)
+```
 
  a                         a
 TRIP                    Mechanic
@@ -49,6 +52,8 @@ TRIP                    Mechanic
   <--------------------------
  a                         a
 TRIP                    Mechanic
+
+```
 
 
 Trip 은 Mechanic 의 public interface 에 대해서 아는게 없지만 self 를 argument 로 넘기면서 원하는걸 해달라고 말하면 Mechanic 은 즉시 Trip 을 호출하여 자전거 리스트를 받아내서 자전거를 준비시킨다.

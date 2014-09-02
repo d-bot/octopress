@@ -38,3 +38,9 @@ end
 `run MyApp.new`	# MyApp 안에 정의된 get/post 함수들이 실행되서 결과값이 call 함수에 의해 호출되어야함.
 
 그럼 class 함수를 생성자 함수처럼 쓰는 이유는 뭘까?
+
+예를 좀 들면
+File.open
+Dir.glob
+
+결국, Use it where it makes sense!
