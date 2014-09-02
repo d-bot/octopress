@@ -1,0 +1,41 @@
+---
+layout: post
+title: "Struct"
+date: 2014-08-25 06:31:49 +0000
+comments: true
+categories: 
+---
+데이터만 저장하는 클래스를 만들때 간편하게 사용할 수 있다.
+
+```ruby
+Person = Struct.new(:name, :age, :job)
+p = Person.new("Devin", 32, "Engineer")
+
+puts p.name # => "Devin"
+
+```
+
+물론 데이터 이외에 함수를 포함하는 클래스를 정의할때도 간편하게 사용할 수 있다.
+```ruby
+class Application < Struct.new :x, :y		# x, y 는 반드시(강제로) Application 의 객체를 통해서만 접근되어야 한다.
+
+  def x_test
+    @x = "access x thru method"
+    puts @x
+  end
+
+  def y_test
+    @y = "access y thru method"
+    puts @y
+  end
+
+end
+
+app = Application.new
+
+app.x = "access x thru instance"
+app.y_test
+
+puts app.x
+puts app.y
+```
