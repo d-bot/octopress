@@ -6,7 +6,7 @@ comments: true
 categories: 
 ---
 
-method_missing 은 일종의 Dynamic Proxy 처럼 동작하여 없는 method 들이 호출되었을때 해당 method 를 갖고 있는 다른 객체로 forwarding 해주는 기능을 하게 된다. (일종의 abstraction 을 가능하게 해줌)
+method_missing 은 일종의 Dynamic Proxy 처럼 동작하여 없는 method 들이 호출되었을때 해당 method 를 갖고 있는 다른 객체로 받은 메세지(method)를 forwarding 해주는 기능을 하게 된다. (일종의 abstraction 을 가능하게 해줌)
 
 ```ruby
 
