@@ -1,0 +1,39 @@
+---
+layout: post
+title: "iTerm2"
+date: 2014-09-11 06:27:20 +0000
+comments: true
+categories: 
+---
+
+### Open clipboard
+
+```
+command + shift +h
+```
+
+### Command history
+
+```
+command + ;
+```
+
+### Move focus among windows
+
+```
+command + ]
+```
+
+### Find cursor
+
+```
+command + /
+```
+
+### Select text w/ keyboard
+
+```
+command + F and tab or shift + tab to select text
+```
+
+
