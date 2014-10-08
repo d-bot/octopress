@@ -3,24 +3,38 @@ layout: post
 title: "TLS Handshake"
 date: 2014-09-21 17:19:41 +0000
 comments: true
-categories: 
+categories:
 ---
 TLS Handshake
 
 Client: TCP SYN
+
 Server: TCP SYN+ACK
+
 Client: TCP ACK
+
 ———begin TLS———-
+
            TLS Hello
+
 Server: TLS Hello
+
            Server Key
+
 Client: TLS Ack
+
            Server Key check
+
            Client Key Exchange
+
 Server: TLS Handshake
+
 ———-Begin HTTP———
+
 Client: HTTP Request (GET)
+
 Client: HTTP Respond
+
 
 HTTPS requires four round trips to make a single HTTP request while unencrypted HTTP only requires two
 
