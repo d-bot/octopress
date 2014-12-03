@@ -5,6 +5,7 @@ date: 2014-12-03 08:32:07 +0000
 comments: true
 categories:
 ---
+[참고: 루비의 꽃, 열거자 Enumerable 모듈](http://blog.nacyot.com/articles/2014-04-19-ruby-enumerable/)
 
 each: 블락으로 계산된 값을 리턴하지도 원래 컬렉션을 변경하지도 않는다.
 ```ruby
