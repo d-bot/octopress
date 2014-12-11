@@ -48,6 +48,7 @@ select: 조건에 부합하는 값만 컬렉션으로 리턴
 ```
 
 그외 재밌는 Enumerable methods
+일반적으로 Enumerable 함수들은 새로운 array 가 리턴되지만 ! (bang) 을 쓰면 원본 array 를 변경시켜 버린다.
 
 
 select (반대: reject)
