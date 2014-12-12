@@ -46,6 +46,8 @@ select: 조건에 부합하는 값만 컬렉션으로 리턴
 2.0.0p353 :002 > a.select { |x| x.even? }
  => [2, 4, 6, 8]
 ```
+/
+
 
 그외 재밌는 Enumerable methods
 일반적으로 Enumerable 함수들은 새로운 array 가 리턴되지만 ! (bang) 을 쓰면 원본 array 를 변경시켜 버린다.
@@ -70,9 +72,15 @@ each_with_index
 (1..10).each_with_index { |value, index| p "#{index}: #{value}" }
 ```
 
-inject
+inject / reduce
 ```ruby
 (1..10).inject(0) { |x, sum| sum += x }
+
+(1..10).reduce(0) { |x, sum| sum += x }
+
+or shortcut
+
+(1..10).reduce(0, :+)
 ```
 
 count: length 와는 다르게 블럭을 받을수 있음
