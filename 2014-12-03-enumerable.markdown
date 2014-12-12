@@ -121,8 +121,15 @@ minmax: 최대 최소 리턴 (블락을 받을 수 있음)
 partition: 특정 조건으로 컬렉션을 분할
 ```ruby
 require 'prime'
-(1..10).partition { |x| Prime.prime? x }
+prime, non_prime = (1..10).partition { |x| Prime.prime? x }
  => [[2, 3, 5, 7], [1, 4, 6, 8, 9, 10]]
+2.1.1 :003 > p prime
+[2, 3, 5, 7]
+ => [2, 3, 5, 7]
+2.1.1 :004 > p non_prime
+[1, 4, 6, 8, 9, 10]
+ => [1, 4, 6, 8, 9, 10]
+2.1.1 :005 >
 ```
 
 group_by: 블럭 평가가 같은 그룹들을 해쉬로 묶어 리턴
