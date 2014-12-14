@@ -6,6 +6,16 @@ comments: true
 categories: 
 ---
 
+```ruby
+#그냥 루프 탈출하는법 안까먹을려고 (return)
+def my_any?
+  each do |value|
+    return true if yield(value)
+  end
+  false
+end
+```
+
 Define times method
 
 ```ruby
