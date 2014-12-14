@@ -9,6 +9,42 @@ categories:
 
 ```ri Enumerable``` or ```ri Enumerable.select```
 
+```ruby
+# Custom Map/Select methods
+
+module MyEnumerable
+  def my_map
+    new_array = []
+    each do |value|
+      new_array << yield(value)
+    end
+    new_array
+  end
+
+  def my_select
+    new_array = []
+    each do |value|
+      new_array << value if yield(value)
+    end
+    new_array
+  end
+
+	def my_detect
+		each do |value|
+			return value if yield(value)
+		end
+		nil
+	end
+
+	def my_any?
+		each do |value|
+			return true if yield(value)
+		end
+		false
+	end
+end
+```
+
 each: 블락으로 계산된 값을 리턴하지도 원래 컬렉션을 변경하지도 않는다.
 ```ruby
 2.0.0p353 :001 > a = %w/ a b c d e f /
