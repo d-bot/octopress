@@ -57,7 +57,7 @@ app.in_environment(:test) do
 end
 ```
 
-Logger 클라스에서 흔히 로깅을 잠시 꺼놓을때 쓰는 기법
+Logger 클라스에서 흔히 로깅을 잠시 꺼놓을때도 사용
 ```ruby
 def silently
 	previous_logger = Configuration.logger
