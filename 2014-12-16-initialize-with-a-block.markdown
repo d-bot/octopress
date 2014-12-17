@@ -8,7 +8,6 @@ categories:
 
 블락을 받아서 해당 값으로 객체를 초기화함. 생각보다 쓸데가 많음.
 
-
 ```ruby
 class Canvas
   attr_accessor :width, :height, :color
