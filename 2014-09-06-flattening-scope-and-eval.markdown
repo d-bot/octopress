@@ -8,7 +8,7 @@ categories:
 
 ###def, class and module
 
-즉, 위의 키워드를 쓰지 않음으로해서 네임스페이스를 flatten 할수 있다.
+즉, 위의 키워드를 쓰지 않음으로해서 네임스페이스를 flatten 할수 있다. 프로그래밍을 하면서 bindings 를 pass 해야하는 어려운 상황이 발생하는데 위의 Scope Gate 를 이용해서 해결해야하는 상황이 많다.
 
 ```ruby
 my_var = "Success"
