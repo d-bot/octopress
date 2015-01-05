@@ -25,6 +25,7 @@ module Foo
   class Bar
     def value1
       puts VAL
+			# puts ::VAL  # In order to access TOP-LEVEL namespace
     end
   end
 end
@@ -39,6 +40,7 @@ Foo::Bar.new.value1		# Foo Local
 Foo::Bar.new.value2		# Global
 
 ```
+즉, global namespace 에 쉽게 접근하려면 class Foo::Bar 스타일을 사용해야함! (아니면 ::VAL 이렇게 접근하든가)
 
 일반적으로 프로젝트안에서 namespace 구조를 디렉토리로 나타낸다. 그리고 class Foo:;Bar 로 정의하면 indent 를 하나 줄일 수 있는 장점도 있다?ㅋ
 
