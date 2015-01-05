@@ -7,7 +7,10 @@ categories:
 ---
 
 [Rack::Builder](http://m.onkey.org/ruby-on-rack-2-the-builder)
+
 [rackup](https://github.com/rack/rack/wiki/%28tutorial%29-rackup-howto)
+
+[youtube](https://www.youtube.com/watch?v=iJ-ZsWtHTIg&spfreload=10)
 
 ## `rackup` == `Rack::Builder.new`
 
