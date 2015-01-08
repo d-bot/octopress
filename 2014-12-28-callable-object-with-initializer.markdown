@@ -23,7 +23,7 @@ class TimeParser
       if time_format
         Proc.new { |value| Time.strptime(value, time_format) }
       else
-        Time.method(:parse)
+        Time.method(:parse)	# 여기서 parse 는 Time 클래스의 인스턴스 메소드임.
       end
   end
 
