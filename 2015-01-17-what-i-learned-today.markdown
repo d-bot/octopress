@@ -31,10 +31,7 @@ end
 
 ```ruby
 class Interpreter
-  attr_accessor :stc
-
   def initialize(&block)
-    @stc = {}
     instance_eval(&block)
   end
 
