@@ -34,7 +34,7 @@ module Schedulable
   end
 
   def scheduled?(start_date, end_date)
-    schedule.scheduled?(self, start_date, end_date)
+    schedule.scheduled?(self, start_date, end_date) # self 를 넘겨야 Schedule 클래스에서 schedulable.class 값이 확인된다.
   end
 
   def lead_days
@@ -57,7 +57,7 @@ class Bicycle
     @schedule = args[:schedule] || Schedule.new
   end
 
-  def scheduleable?(start_date, end_date)
+  def schedulable?(start_date, end_date)
     !scheduled?(start_date - lead_days, end_date)
   end
 
@@ -77,12 +77,12 @@ starting = Date.parse("2015/09/04")
 ending = Date.parse("2015/09/10")
 
 b = Bicycle.new
-b.scheduleable?(starting, ending)
-# 이 자전거는 2015-09-03 과 2015-09-10 사이에 사용할 수 있다.j
+b.schedulable?(starting, ending)
+# 이 자전거는 2015-09-03 과 2015-09-10 사이에 사용할 수 있다.
 # => true
 ```
 
-이렇게 메시지의 패턴은 Bicycle에게 scheduleable?을 전송하는 것으로부터 scheduleable에게 scheduleable?을 전송하는 것으로 바뀌었다. 아래 예시는 Vehicle 과 Mechanic 에 Schedulable 모듈을 include  하여 schedulable? 메시지에 반응할 수 있도록 변경한 것이다.
+이렇게 메시지의 패턴은 Bicycle에게 schedulable?을 전송하는 것으로부터 Schedulable 모듈에게 schedulable? 을 전송하는 것으로 바뀌었다. 아래 예시는 Vehicle 과 Mechanic 에 Schedulable 모듈을 include  하여 schedulable? 메시지에 반응할 수 있도록 변경한 것이다.
 
 ```ruby
 class Vehicle
