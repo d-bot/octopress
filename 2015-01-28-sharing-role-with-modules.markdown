@@ -25,7 +25,8 @@ end
 module Schedulable
   attr_writer :schedule
 
-  def schedule
+  #def schedule
+  def initialize
     @schedule ||= ::Schedule.new
   end
 
