@@ -6,6 +6,28 @@ comments: true
 categories: 
 ---
 
+환경 변수를 이용하기 (패스워드 사용으로 적합할듯)
+```ruby
+#!/usr/bin/env ruby
+
+puts ENV['dchoi']
+
+
+:dchoi-mac:~:$ export dchoi=TEST
+:dchoi-mac:~:$ ruby env.rb
+TEST
+
+:dchoi-mac:~:$ dchoi=ASDF ruby env.rb
+ASDF
+:dchoi-mac:~:$ echo $dchoi
+TEST
+
+:dchoi-mac:~:$ dchoi=dylan ruby env.rb
+dylan
+:dchoi-mac:~:$ echo $dchoi
+TEST
+```
+
 ```ruby
 class Stack
   def initialize
