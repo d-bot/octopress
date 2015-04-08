@@ -5,8 +5,34 @@ date: 2015-01-17 07:31:12 +0000
 comments: true
 categories: 
 ---
+### Ctags
+```
+# Create tags
+$ ctags -R . # put ctags file in .gitignore file
 
-유연하게 함수 인자받기
+ctrl + ]: Find fuction definition
+ctrl + t: back to cursor
+```
+
+### Loading/Requiring Code
+
+`$LOAD_PATH` and `$:` are global variables that have library location information
+```ruby
+# File.expand_path: converts relative path to absolute path
+# Arguments:
+#  - 1st: relative path from current dir
+#  - 2nd: the starting path (__FILE__)
+
+lib = File.expand_path("../../lib", __FILE__)  # To obtain paths around a source file.
+$:.unshift(lib)
+# See http://www.sitepoint.com/loading-code-ruby/
+
+# Or
+require_relative('query/query')
+```
+
+
+### 유연하게 함수 인자받기
 ```ruby
 2.2.0p0 :007 > def test(a, *b, **c)
 2.2.0p0 :008?>   p a
@@ -26,7 +52,7 @@ categories:
  => {:a=>4, :b=>5}
 ```
 
-환경 변수를 이용하기 (패스워드 사용으로 적합할듯)
+### 환경 변수를 이용하기 (패스워드 사용으로 적합할듯)
 ```ruby
 #!/usr/bin/env ruby
 
