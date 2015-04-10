@@ -1,0 +1,60 @@
+---
+layout: post
+title: "Pry"
+date: 2015-04-09 11:21:52 +0000
+comments: true
+categories: 
+---
+## Debug with Pry
+
+```ruby
+[1] pry(main)> require 'rack'
+=> true
+[2] pry(main)> ls Rack
+constants:
+  Auth            CONTENT_LENGTH  GET             MockRequest   REQUEST_METHOD  Static
+  BodyProxy       CONTENT_TYPE    Handler         MockResponse  Response        TempfileReaper
+  Builder         ContentLength   Head            Multipart     Runtime         URLMap
+  CACHE_CONTROL   ContentType     HEAD            NullLogger    SCRIPT_NAME     Utils
+  Cascade         Deflater        Lint            PATH_INFO     Sendfile        VERSION
+  Chunked         Directory       Lock            QUERY_STRING  Server
+  CommonLogger    ETag            Logger          Recursive     Session
+  ConditionalGet  File            MethodOverride  Reloader      ShowExceptions
+  Config          ForwardRequest  Mime            Request       ShowStatus
+Rack.methods: release  version
+[3] pry(main)> ls Rack::Handler
+constants: CGI  EventedMongrel  FastCGI  LSWS  Mongrel  SCGI  SwiftipliedMongrel  Thin  WEBrick
+Rack::Handler.methods: default  get  pick  register  try_require
+instance variables: @handlers
+
+
+--
+pr:dchoi-mac:~:$ pry
+[1] pry(main)> require 'base64'
+=> true
+[2] pry(main)> ls Base64
+Base64.methods:
+  decode64  encode64  strict_decode64  strict_encode64  urlsafe_decode64  urlsafe_encode64
+[3] pry(main)> Base64.encode64
+ArgumentError: wrong number of arguments (0 for 1)
+from /Users/dchoi/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/base64.rb:37:in `encode64'
+[4] pry(main)> Base64.encode64 "hi"
+=> "aGk=\n"
+[5] pry(main)> Base64.decode64 _
+=> "hi"
+[6] pry(main)> ? Base64.strict_encode64   ## Show Documentation
+
+[7] pry(main)> require "sinatra.rb"
+[8] pry(main)> Base.default_options # Run some methods
+[9] pry(main)> wtf?
+[10] pry(main)> $ # Show source code
+[11] pry(main)> edit # use $editor
+[12] pry(main)> _out_
+[11] pry(main)> _in_
+[12] pry(main)> puts "test"; # semi colon doesnt return nil
+
+
+```
+http://www.youtube.com/watch?v=jDXsEzOHb2M
+
+
