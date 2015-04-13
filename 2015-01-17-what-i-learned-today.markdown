@@ -5,6 +5,14 @@ date: 2015-01-17 07:31:12 +0000
 comments: true
 categories: 
 ---
+
+```ruby
+[2] pry(main)> a = %/ djcjsksk
+[2] pry(main)* jdjejsj djdjd eee
+[2] pry(main)* 1111 q q q q /
+=> " djcjsksk \njdjejsj djdjd eee\n1111 q q q q "
+```
+
 ### Ctags
 ```
 # Create tags

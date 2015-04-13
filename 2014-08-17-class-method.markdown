@@ -6,6 +6,8 @@ comments: true
 categories: 
 ---
 
+클래스 메서드는 해당 클래스로부터 생성되는 객체의 interface or responsibilities 에 속할 필요가 없는 행동들을 정의하는데 사용한다.
+
 In order to save configurations, class valuables and methods should be used. [Also see #4](http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/)
 
 ```ruby
