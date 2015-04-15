@@ -113,4 +113,7 @@ Ruby
 [5] pry(main)> puts lang;
 Ruby
 [6] pry(main)>
+
+
+# https://github.com/pry/pry/wiki/Editor-integration
 ```

@@ -11,6 +11,32 @@ categories:
 In order to save configurations, class valuables and methods should be used. [Also see #4](http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/)
 
 ```ruby
+module Macro
+  class Base
+    def self.has_many(name)
+      puts "#{self} has many #{name}"
+
+      define_method(name) do
+        puts "#{name} has been defined"
+      end
+    end
+  end
+end
+
+class Checklist < Macro::Base
+  has_many :target
+end
+
+phase1 = Checklist.new
+phase1.target
+
+
+#dch [6:04:44] >  _posts git:(master) ✗ ruby test.rb
+#Checklist has many target
+#target has been defined
+```
+
+```ruby
 class MyApp
 
   def self.test(msg)
