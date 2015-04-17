@@ -6,6 +6,8 @@ comments: true
 categories: 
 ---
 
+Symbol 은 기본적으로 string 과 크게 다를것 없지만 immutable 하기 때문에 meta programming 에서 많이 사용된다. 그리고 컨벤션상 심볼이 스트링에 비해 좀 더 의미있는 데이터를 표현해 줄 수 있다.
+
 ```ruby
 [2] pry(main)> a = %/ djcjsksk
 [2] pry(main)* jdjejsj djdjd eee

@@ -6,9 +6,11 @@ comments: true
 categories: 
 ---
 
-클래스 메서드는 해당 클래스로부터 생성되는 객체의 interface or responsibilities 에 속할 필요가 없는 행동들을 정의하는데 사용한다.
+### 클래스 메서드는 해당 클래스로부터 생성되는 객체의 interface or responsibilities 에 속할 필요가 없는 행동들을 정의하는데 사용한다.
 
-In order to save configurations, class valuables and methods should be used. [Also see #4](http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/)
+### 클래스 메서드들이 클래스 바디에서 실행(호출)되는 것은 아이언맨이 싸우기전 수트를 착용하는 과정같음. 아이언맨 전투는 Ironman.new 로 객체를 생성하면서 실제 시작
+
+### 혹은 아래와 같이 Macro 로 사용한다. 여기서 눈여겨 봐야할부분은 class body 도 클래스 메서드를 호출하며 코드를 실행한다는 부분
 
 ```ruby
 module Macro
@@ -35,6 +37,8 @@ phase1.target
 #Checklist has many target
 #target has been defined
 ```
+
+#### In order to save configurations, class valuables and methods should be used. [Also see #4](http://yehudakatz.com/2009/08/24/my-10-favorite-things-about-the-ruby-language/)
 
 ```ruby
 class MyApp
