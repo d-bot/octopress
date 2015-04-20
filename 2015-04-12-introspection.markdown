@@ -39,4 +39,12 @@ puts spitty.instance_variables.inspect
 [:@name, :@birthdate]
 ```
 
+#### Which instance variables are defined?
+```ruby
+@name = "Mike"
+test = "name"
+2.2.0p0 :001 > puts instance_variable_get("@#{test}")
+mike
+ => nil
+```
 
