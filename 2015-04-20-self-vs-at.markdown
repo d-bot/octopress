@@ -8,7 +8,7 @@ categories:
 
 ### self vs @
 
-@ 를 이용하면 해당 객체의 instance variable 에 직접 액세스하여 데이터를 가져오는데 self 를 이용하면 해당 객체에 실제 "메세지"를 보내는 방식으로 데이터에 접근하여 해당 객체의 현재 상태의 (current state) 값에 액세스할 수 있음. 아래의 예제는 File 객체를 @ 와 self 를 이용해서 접근할때 file pointer 가 변경되는 상태까지 self 를 이용해서 액세스하는것을 보여준다.
+@ 를 이용하면 해당 객체의 instance variable 에 직접 액세스하여 데이터를 가져오는데 self 를 이용하면 해당 객체에 실제 "메세지"를 보내는 방식으로 데이터에 접근한다.
 
 ```ruby
 # Content of self_at.txt
@@ -31,7 +31,9 @@ class Test
 
   def initialize
     self.file = File.open("self_at.txt", 'r')
+    #@file = File.open("self_at.txt", 'r')
     self.file.each do |line|
+    #@file.each do |line|
       if line =~ /line4/
         puts "read line4 so far"
         continue(self)
