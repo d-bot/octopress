@@ -47,7 +47,10 @@ puts spitty.instance_variables.inspect
 @name = "Mike"
 test = "name"
 2.2.0p0 :001 > puts instance_variable_get("@#{test}")
-mike
+Mike
+ => nil
+2.2.0p0 :002 > puts instance_variable_set("@#{test}", "asdf")
+asdf
  => nil
 ```
 

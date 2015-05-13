@@ -7,3 +7,4 @@ categories:
 ---
 
 https://robots.thoughtbot.com/tell-dont-ask
+https://pragprog.com/articles/tell-dont-ask

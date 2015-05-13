@@ -5,8 +5,21 @@ date: 2015-01-17 07:31:12 +0000
 comments: true
 categories: 
 ---
+#### 배열 뺄셈?
+```ruby
+irb(main):001:0> cities  = %w/London Oslo Paris Amsterdam Berlin/
+=> ["London", "Oslo", "Paris", "Amsterdam", "Berlin"]
+irb(main):002:0> visited = %w/Berlin Oslo/
+=> ["Berlin", "Oslo"]
+irb(main):003:0> cities - visited
+=> ["London", "Paris", "Amsterdam"]
+```
 
-Symbol 은 기본적으로 string 과 크게 다를것 없지만 immutable 하기 때문에 meta programming 에서 많이 사용된다. 그리고 컨벤션상 심볼이 스트링에 비해 좀 더 의미있는 데이터를 표현해 줄 수 있다.
+#### object.class? 가 리턴하는 클래스가 해당 object 와 같다면 연속적인 메서드 체이닝이 가능하다. (object.date.month 이런식으로)
+
+#### if 를 사용하는것을 줄이고 def has_table?(obj) 와 같은 함수를 이용해서 조건을 만든다?? 잘못 이해한것 같고 if statement 들을 줄이기 위해서 메타 프로그래밍을 이용하는게 맛는듯.. (abstract 한 부분을 concrete 하게)
+
+#### Symbol 은 기본적으로 string 과 크게 다를것 없지만 immutable 하기 때문에 meta programming 에서 많이 사용된다. 그리고 컨벤션상 심볼이 스트링에 비해 좀 더 의미있는 데이터를 표현해 줄 수 있다.
 
 ```ruby
 [2] pry(main)> a = %/ djcjsksk

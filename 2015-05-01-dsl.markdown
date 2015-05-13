@@ -1,0 +1,25 @@
+---
+layout: post
+title: "DSL"
+date: 2015-05-01 12:05:46 +0000
+comments: true
+categories: 
+---
+
+### DSL
+
+아래와 같이 매크로 방식을 이용하여 받은 인자들로 함수를 구현.
+
+```ruby
+class Test < Library
+  has_many :feature
+end
+
+class Library
+  def self.has_many(name)
+    define_method(name) do
+      # function body
+    end
+  end
+end
+```
