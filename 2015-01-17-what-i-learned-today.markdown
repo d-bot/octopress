@@ -16,6 +16,7 @@ irb(main):003:0> cities - visited
 
 $ TARGET="1.1.1.1 2.2.2.2 3.3.3.3" TEST="1.1.1.1" ruby -e 'puts (ENV["TARGET"].split - ENV["TEST"].split).join" "'
 2.2.2.2 3.3.3.3
+
 ```
 
 #### object.class? 가 리턴하는 클래스가 해당 object 와 같다면 연속적인 메서드 체이닝이 가능하다. (object.date.month 이런식으로)
