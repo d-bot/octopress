@@ -103,3 +103,15 @@ class Mechanic
 end
 ```
 
+또다른 예제로는 기존에 존재하는 클래스에 모듈을 믹스인하여 새로운 동작이나 특성을 가지게 되는 새로운 클래스를 만드는 기능.
+```ruby
+class FetchyMcfetcherson
+  include HTTParty
+end
+
+FetchyMcfetcherson.get('http://foobar.com')
+```
+
+위와 같이, HTTParty 모듈을 include 함으로서 FetchyMcfetcherson 클래스에 새로운 get 이라는 클래스 메서드가 추가되어 새로운 기능을 가지는 FetchyMcfetcherson 이 되었다.
+
+
