@@ -5,6 +5,8 @@ date: 2015-01-17 07:31:12 +0000
 comments: true
 categories: 
 ---
+#### 객체 디자인에서 가장 기본이 되는 것 중의 하나는 책임을 어디에 둘 지를 결정하는 것이다.
+
 #### 배열 뺄셈?
 ```ruby
 irb(main):001:0> cities  = %w/London Oslo Paris Amsterdam Berlin/
