@@ -3,7 +3,7 @@ layout: post
 title: "Object Composition"
 date: 2015-01-30 07:41:20 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ### Composition

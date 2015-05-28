@@ -3,7 +3,7 @@ layout: post
 title: "Initialize with a block"
 date: 2014-12-16 15:48:49 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 블락을 받아서 해당 값으로 객체를 초기화함. 생각보다 쓸데가 많음.

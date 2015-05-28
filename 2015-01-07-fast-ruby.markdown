@@ -3,7 +3,7 @@ layout: post
 title: "Fast Ruby"
 date: 2015-01-07 22:25:22 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 [Fast Ruby](https://speakerdeck.com/sferik/writing-fast-ruby)

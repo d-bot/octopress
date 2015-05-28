@@ -3,7 +3,7 @@ layout: post
 title: "Callback instead of return"
 date: 2014-12-07 19:44:29 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 함수를 작성할때 블럭을 파라미터로 받아서 return 대신 블락을 받아서 return 될 데이터를 블락으로 넘긴다. Client code 에서는 넘어온 데이터를 블락으로 평가하여 코드를 작성한다.

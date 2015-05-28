@@ -3,7 +3,7 @@ layout: post
 title: "Custom iterators"
 date: 2014-12-13 10:16:11 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ```ruby

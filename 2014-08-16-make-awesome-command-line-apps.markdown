@@ -3,7 +3,7 @@ layout: post
 title: "Make Awesome Command Line Apps"
 date: 2014-08-16 08:33:16 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 [Video Link](https://www.youtube.com/watch?v=1ILEw6Qca3U)

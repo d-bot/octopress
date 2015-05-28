@@ -3,7 +3,7 @@ layout: post
 title: "Dynamic Method"
 date: 2015-04-17 04:39:19 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 일반적인 메소드 콜은 컴파일러가 해당되는 method 가 콜을 받는 객체에 매칭되는 method 가 있는지 검사하는데 이것을 static type checking 이라고 한다. 이러한 static type checking 때문에 tedious 코드를 많이 생산하게 되는데 dynamic languages(python, ruby) 등에는 해당 이슈가 없다.

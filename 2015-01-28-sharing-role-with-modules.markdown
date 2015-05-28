@@ -3,7 +3,7 @@ layout: post
 title: "Sharing Role with Modules"
 date: 2015-01-28 09:00:24 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 특정 문제를 해결하기 위해서 별로 연관이 없는 객체들이 공통의 행동을 공유하게 만든다. 이런 공통의 행동은 클래스와 아무런 상관이 없다. 이 행동은 객체가 수행하는 역할이다.

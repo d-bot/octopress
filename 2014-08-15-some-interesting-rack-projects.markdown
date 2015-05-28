@@ -3,7 +3,7 @@ layout: post
 title: "Some Interesting Rack Projects"
 date: 2014-08-15 00:37:27 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 * [Rack Profile](https://github.com/ddollar/rack-profile)

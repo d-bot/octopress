@@ -3,7 +3,7 @@ layout: post
 title: "Resource management with a block"
 date: 2014-12-17 02:13:40 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 블락을 이용하여 객체 생성 및 제거등의 리소스 관리를 편리하게 하는 기법. 주로 메모리 소모가 많거나 한정된 자원을 다룰때 자주 사용됨.

@@ -3,7 +3,7 @@ layout: post
 title: "Inheritance"
 date: 2015-01-20 09:35:22 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ### 상속 이해하기

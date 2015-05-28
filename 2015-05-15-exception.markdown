@@ -3,7 +3,7 @@ layout: post
 title: "Exception"
 date: 2015-05-15 07:13:49 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 #### 기본적으로 예외객체는 에러가 발생하는 조건에 대한 정보를 담고 있다. 대부분 이 정보는 사람이 읽을 수 있는 형태로 프로그램이 크래쉬 되기전에 터미널에 프린트된다. 물론 이 예외 객체는 인터셉트되어 rescue 절을 이용해서 처리할 수 있다.

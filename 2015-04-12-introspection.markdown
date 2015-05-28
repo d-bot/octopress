@@ -3,7 +3,7 @@ layout: post
 title: "Introspection"
 date: 2015-04-12 08:56:20 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ### http://www.leighhalliday.com/ruby-introspection-metaprogramming

@@ -3,7 +3,7 @@ layout: post
 title: "Class Method"
 date: 2014-08-17 10:20:56 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ### 클래스 메서드는 해당 클래스로부터 생성되는 객체의 interface or responsibilities 에 속할 필요가 없는 행동들을 정의하는데 사용한다.

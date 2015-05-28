@@ -3,7 +3,7 @@ layout: post
 title: "Alias"
 date: 2014-08-18 00:29:59 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 기본적으로 이미 존재하는 함수(method1)를 alias 를 이용해서 다른 이름으로 백업해 놓고 method1 을 재정의하는 기능

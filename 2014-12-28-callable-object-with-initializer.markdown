@@ -3,7 +3,7 @@ layout: post
 title: "Callable object with initializer"
 date: 2014-12-28 02:19:06 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 Found this while reading fluentd source codes

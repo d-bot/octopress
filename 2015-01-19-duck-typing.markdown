@@ -3,7 +3,7 @@ layout: post
 title: "Duck Typing"
 date: 2015-01-19 09:24:51 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ### 오리 타입

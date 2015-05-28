@@ -3,7 +3,7 @@ layout: post
 title: "Struct"
 date: 2014-08-25 06:31:49 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 데이터만 저장하는 클래스를 만들때 간편하게 사용할 수 있다.
 

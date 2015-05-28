@@ -3,7 +3,7 @@ layout: post
 title: "Object Model"
 date: 2014-09-02 04:06:19 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 메타 프로그래밍 관점에서 class 키워드는 클래스 정의보다는 scope 지정 키워드로서 더 의미가 깊다.

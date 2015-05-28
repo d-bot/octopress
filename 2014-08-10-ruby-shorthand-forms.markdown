@@ -3,7 +3,7 @@ layout: post
 title: "ruby shorthand forms"
 date: 2014-08-10 09:44:10 +0000
 comments: true
-categories: shorthand
+categories: Ruby
 ---
 [참고](http://www.toptal.com/ruby/interview-questions)
 

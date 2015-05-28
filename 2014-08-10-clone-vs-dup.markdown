@@ -3,7 +3,7 @@ layout: post
 title: "clone vs dup"
 date: 2014-08-10 23:20:38 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 [참고](http://aaronlasseigne.com/2014/07/16/know-ruby-clone-and-dup/)

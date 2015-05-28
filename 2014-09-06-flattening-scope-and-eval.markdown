@@ -3,7 +3,7 @@ layout: post
 title: "Flattening Scope & Eval"
 date: 2014-09-06 18:29:39 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ###def, class and module

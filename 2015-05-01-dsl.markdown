@@ -3,7 +3,7 @@ layout: post
 title: "DSL"
 date: 2015-05-01 12:05:46 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ### DSL

@@ -3,7 +3,7 @@ layout: post
 title: "Creativity"
 date: 2014-12-29 07:06:10 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 From: http://25iq.com/2014/12/28/a-dozen-things-ive-learned-from-steve-jobs-about-business/
 

@@ -3,7 +3,7 @@ layout: post
 title: "ruby namespace"
 date: 2014-12-29 17:51:05 +0000
 comments: true
-categories: Namespace
+categories: Ruby
 ---
 
 [참고](http://www.toptal.com/ruby/interview-questions)

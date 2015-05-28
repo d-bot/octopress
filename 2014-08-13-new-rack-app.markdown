@@ -3,7 +3,7 @@ layout: post
 title: "New Rack App"
 date: 2014-08-13 07:46:33 +0000
 comments: true
-categories: Rack
+categories: Ruby
 ---
 
 ### Busan Framework

@@ -3,7 +3,7 @@ layout: post
 title: "Rack Builder (Run, Use and Map)"
 date: 2014-08-18 06:57:10 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 [Rack::Builder](http://m.onkey.org/ruby-on-rack-2-the-builder)

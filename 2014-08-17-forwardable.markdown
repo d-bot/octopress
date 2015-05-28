@@ -3,7 +3,7 @@ layout: post
 title: "Forwardable"
 date: 2014-08-17 08:17:17 +0000
 comments: true
-categories: Forwardable
+categories: Ruby
 ---
 
 [참고](http://oneofthesedaysblog.com/ruby-day-4-forwardable)

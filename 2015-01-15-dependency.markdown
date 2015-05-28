@@ -3,7 +3,7 @@ layout: post
 title: "Dependency"
 date: 2015-01-15 10:09:56 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 ```ruby

@@ -3,7 +3,7 @@ layout: post
 title: "Single Responsibility"
 date: 2015-01-14 09:17:53 +0000
 comments: true
-categories: 
+categories: Ruby
 ---
 
 객체지향 시스템의 근간을 이루는 것은 메세지(message)이지만 가장 눈에 띄는 구조는 클래스이다. 즉, 하나의 책임만 지는 클래스를 만들어야함.
