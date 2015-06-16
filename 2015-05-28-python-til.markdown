@@ -10,3 +10,5 @@ categories: Python
 http://pythoninreal.blogspot.com/2013/12/virtualenv.html
 
 ### Range
+
+Python always return None as the result of a statement unless it explicitly return value
