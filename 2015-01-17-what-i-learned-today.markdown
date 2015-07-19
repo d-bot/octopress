@@ -5,6 +5,18 @@ date: 2015-01-17 07:31:12 +0000
 comments: true
 categories: Ruby
 ---
+
+### gsub 도 블럭을 받아서 replace 할수 있다!
+```ruby
+2.2.0p0 :018 > " qwer zxcv".gsub(/\w{3,}/) {|word| word.capitalize}
+ => " Qwer Zxcv"
+ 2.2.0p0 :019 > " qwer zxcv".gsub(/\w{3,}/)
+  => #<Enumerator: " qwer zxcv":gsub(/\w{3,}/)>
+
+2.2.0p0 :001 > " asdf test".gsub(/\w{3,}/,&:capitalize)
+ => " Asdf Test"
+```
+
 ### Just read
 http://ppss.kr/archives/48436
 

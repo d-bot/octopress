@@ -15,3 +15,10 @@ rake db:create_migration NAME=install_infos   # table name will be plural
 ## Run
 rake migrate:db
 ```
+
+#### Add a new column
+```ruby
+rake db:add_zone1_zone2_column iemail:string
+```ruby
+```
+```
