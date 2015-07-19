@@ -6,7 +6,7 @@ comments: true
 categories: Ruby
 ---
 
-### gsub 도 블럭을 받아서 replace 할수 있다!
+### gsub 도 블럭을 받아서 split/replace 할수 있다!
 ```ruby
 2.2.0p0 :018 > " qwer zxcv".gsub(/\w{3,}/) {|word| word.capitalize}
  => " Qwer Zxcv"
