@@ -6,23 +6,6 @@ comments: true
 categories: Ruby
 ---
 
-### 문자열에서 scan 을 이용해서 특정 갯수 크기의 문자열 배열을 생성하기
-```ruby
-2.2.0p0 :004 > "asdf".scan(/\w{2}/)
- => ["as", "df"]
-```
-
-### gsub 도 블럭을 받아서 split/replace 할수 있다!
-```ruby
-2.2.0p0 :018 > " qwer zxcv".gsub(/\w{3,}/) {|word| word.capitalize}
- => " Qwer Zxcv"
- 2.2.0p0 :019 > " qwer zxcv".gsub(/\w{3,}/)
-  => #<Enumerator: " qwer zxcv":gsub(/\w{3,}/)>
-
-2.2.0p0 :001 > " asdf test".gsub(/\w{3,}/,&:capitalize)
- => " Asdf Test"
-```
-
 ### Just read
 http://ppss.kr/archives/48436
 
