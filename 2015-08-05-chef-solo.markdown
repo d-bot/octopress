@@ -1,0 +1,144 @@
+---
+layout: post
+title: "Chef Solo"
+date: 2015-08-05 06:26:18 +0000
+comments: true
+categories: Chef
+---
+
+# Install Chef
+
+```
+$ curl -L http://www.opscode.com/chef/install.sh | sudo bash
+$ gem install chef
+$ apt-get install chef
+```
+
+# Create repository
+
+- recipe: 서버 상태를 정의한다.
+- cookbook: 클래스의 네임스페이스와 같이 특정 recipe 에 필요한 데이터나 파일을 모아둔 저장공간을 쿡북이라 한다.
+- repository(kitchen): 쿡북 그룹을 포함한, chef 실행에 필요한 일련의 파일을 모아둔 저장공간을 repository or kitchen 이라고 부른다.
+
+repository > cookbook > recipe
+
+```
+# Create repository
+$ git clone git://github.com/opscode/chef-repo.git
+```
+
+repository 는 특정 시스템에 하나 정도 존재하는 단위다. 예를 들어 전혀 다른 두 개의 시스템 A와 B 가 있다고 하고 A와 B에 repository 는 하나만 존재하면 된다.
+
+# Create cookbook
+
+Chef 를 설치하면 knife 라는 repository 를 조작하기 위한 툴이 설치가 된다.
+
+```
+# knife 초기화
+
+$⚡️  knife configure
+WARNING: No knife configuration file found
+Where should I put the config file? [/home/dchoi/.chef/knife.rb]
+Please enter the chef server URL: [https://dch.io:443]
+Please enter an existing username or clientname for the API: [dchoi]
+Please enter the validation clientname: [chef-validator]
+Please enter the location of the validation key: [/etc/chef-server/chef-validator.pem]
+Please enter the path to a chef repository (or leave blank): /home/dchoi/chef-repo
+*****
+
+You must place your client key in:
+  /home/dchoi/.chef/dchoi.pem
+  Before running commands with Knife!
+
+  *****
+
+  You must place your validation key in:
+    /etc/chef-server/chef-validator.pem
+    Before generating instance data with Knife!
+
+    *****
+    Configuration file written to /home/dchoi/.chef/knife.rb
+
+# knife 로 dch 라는 쿡북 생성
+
+$⚡️  cd chef-repo
+$⚡️  knife cookbook create dch -o cookbooks
+** Creating cookbook dch in /home/dchoi/chef-repo/cookbooks
+** Creating README for cookbook: dch
+** Creating CHANGELOG for cookbook: dch
+** Creating metadata for cookbook: dch
+
+```
+
+Chef Solo 환경에서 이용하는 명령어는 knife cookbook 과 knife solo 정도 밖에 없다.
+
+
+# Create recipe
+
+Install Nginx
+
+```
+$ vi cookbooks/dch/recipes/default.rb
+
+#
+# Cookbook Name:: dch
+# Recipe:: default
+#
+# Copyright 2015, YOUR_COMPANY_NAME
+#
+# All rights reserved - Do Not Redistribute
+#
+
+package "nginx" do
+  action :install
+  end
+```
+
+# Chef Solo 실행
+
+Chef Solo 실행시 사용할 recipe 를 포함하고 있는 JSON 파일 localhost.json 을 준비한다. 이것을 chef-repo 디렉토리 안에 저장한다.
+
+```
+# localhost.json
+{
+    "run_list" : [
+      "recipe[dch]"
+    ]
+}
+```
+
+그리고 나서 Chef 가 이용할 임시 디렉토리나 쿡북의 경로를 지정하는 설정파일인 .rb 파일을 solo.rb 라는 이름으로 chef-repo 디렉토리 아래에 저장한다.
+
+```
+# solo.rb
+
+file_cache_path "/tmp/chef-solo"
+cookbook_path ["/home/dchoi/chef-repo/cookbooks"]
+```
+
+드디어 실행! (root perm 이 필요하다는게 함정)
+```
+$⚡️  sudo chef-solo -c solo.rb -j localhost.json
+Starting Chef Client, version 12.4.1
+Compiling Cookbooks...
+Converging 1 resources
+Recipe: dch::default
+  * apt_package[nginx] action install (up to date)
+
+  Running handlers:
+  Running handlers complete
+  Chef Client finished, 0/1 resources updated in 1.670899557 seconds
+```
+
+
+## 요약하면
+- recipe 를 만든다
+- JSON 파일로 실행할 recipe 를 지정한다
+- chef-solo 명령어로 그것을 실행한다
+
+
+# Resource 란?
+
+recipe 를 작성할때 log 혹은 package 라는 명령어를 사용하는데 이 log 나 package 는 ruby 의 문법이 아닌 Chef 가 제공하는 DSL 이다. 이 recipe 안에서 사용하는 서버 상태에 어떤 영향을 주는 명령을 chef 에서는 Resource 라고 한다. Resource 는 자신이 정의할 수도 있고, 제 삼자가 만든것을 import 할 수도 있다.
+
+
