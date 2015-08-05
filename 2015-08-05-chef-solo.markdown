@@ -96,7 +96,7 @@ package "nginx" do
 
 # Chef Solo 실행
 
-Chef Solo 실행시 사용할 recipe 를 포함하고 있는 JSON 파일 localhost.json 을 준비한다. 이것을 chef-repo 디렉토리 안에 저장한다.
+Chef Solo 실행시 사용할 recipe 를 포함하고 있는 JSON 파일 localhost.json 을 준비한다. 이것을 chef-repo 디렉토리 안에 저장한다. 원래 해당 파일안의 정보는 chef server 로 부터 받아오는 값들이나 chef solo 모델에서는 server 가 없기때문에 수동으로 만들어준다.
 
 ```
 # localhost.json
@@ -131,7 +131,7 @@ Recipe: dch::default
 ```
 
 
-## 요약하면
+# 요약하면
 - recipe 를 만든다
 - JSON 파일로 실행할 recipe 를 지정한다
 - chef-solo 명령어로 그것을 실행한다
@@ -142,3 +142,113 @@ Recipe: dch::default
 recipe 를 작성할때 log 혹은 package 라는 명령어를 사용하는데 이 log 나 package 는 ruby 의 문법이 아닌 Chef 가 제공하는 DSL 이다. 이 recipe 안에서 사용하는 서버 상태에 어떤 영향을 주는 명령을 chef 에서는 Resource 라고 한다. Resource 는 자신이 정의할 수도 있고, 제 삼자가 만든것을 import 할 수도 있다.
 
 
+
+# Nginx Cookbook 만들기
+
+### cookbook 생성
+
+```
+$⚡️  knife cookbook create nginx -o cookbooks/
+** Creating cookbook nginx in /home/dchoi/chef-repo/cookbooks
+** Creating README for cookbook: nginx
+** Creating CHANGELOG for cookbook: nginx
+** Creating metadata for cookbook: nginx
+```
+
+### recipe 생성
+```
+# cookbooks/nginx/recipes/default.rb
+#
+# Cookbook Name:: nginx
+# Recipe:: default
+#
+# Copyright 2015, YOUR_COMPANY_NAME
+#
+# All rights reserved - Do Not Redistribute
+#
+package "nginx" do
+  action :install
+end
+
+service "nginx" do
+  supports :status => true, :restart => true, :reload => true
+  action [ :enable, :start ]
+end
+
+template "nginx.conf" do
+  path "/etc/nginx/nginx.conf"
+  source "nginx.conf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :reload, 'service[nginx]'
+end
+
+```
+
+위의 template resource 키워드에서 보는것 처럼 해당 nginx.conf 파일의 템플릿을 cookbooks/nginx/templates/default/nginx.conf.erb 로 저장해 둔다.
+
+만약 nginx.conf 가 변수가 전혀 포함되지 않은 템플릿이라면 files 디렉토리에 보관한다.
+
+attributes 디렉토리는 템플릿에서 사용한 Attribute(변수)의 기본값을 설정하고 싶을 때 사용한다.
+
+
+### template 생성
+
+```
+# cookbooks/nginx/templates/default/nginx.conf.erb
+
+user nobody nogroup;
+worker_processes <%= node['nginx']['worker'] %>;
+
+```
+
+
+### localhost-nginx.json
+
+템플릿에서 사용할 Attribute(변수)의 값을 설정
+```
+{
+  "nginx": {
+    "worker" : 2
+  },
+  "run_list" :[
+    "nginx"
+  ]
+}
+```
+
+### Run chef-solo
+
+```
+$⚡️  sudo chef-solo -c solo.rb -j localhost-nginx.json
+Starting Chef Client, version 12.4.1
+Compiling Cookbooks...
+Converging 3 resources
+Recipe: nginx::default
+  * apt_package[nginx] action install (up to date)
+  * service[nginx] action enable (up to date)
+  * service[nginx] action start (up to date)
+  * template[nginx.conf] action create
+    - update content in file /etc/nginx/nginx.conf from 0bcfe9 to f7615f
+    --- /etc/nginx/nginx.conf 2015-08-05 08:37:21.844411820 +0000
+    +++ /tmp/chef-rendered-template20150805-24730-cqmfzf  2015-08-05 08:40:24.736333530 +0000
+    @@ -1,5 +1,5 @@
+     user nobody nogroup;
+    -worker_processes ;
+    +worker_processes 2;
+
+    ...
+    diff
+    ...
+
+
+  * service[nginx] action reload
+    - reload service service[nginx]
+
+Running handlers:
+Running handlers complete
+Chef Client finished, 2/5 resources updated in 1.551847529 seconds
+```
+
+worker 변수는 localhost-nginx.json 에 정의된데로 적용되었고 마지막에 nginx 데몬이 reload 되었음.
