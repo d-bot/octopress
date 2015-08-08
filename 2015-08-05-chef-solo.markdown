@@ -184,6 +184,14 @@ template "nginx.conf" do
   notifies :reload, 'service[nginx]'
 end
 
+git "/home/dchoi/projects/delp" do
+  repository "https://github.com/d-bot/delp.git"
+  reference "master"
+  action :sync
+  user "dchoi"
+  group "dchoi"
+end
+
 ```
 
 위의 template resource 키워드에서 보는것 처럼 해당 nginx.conf 파일의 템플릿을 cookbooks/nginx/templates/default/nginx.conf.erb 로 저장해 둔다.
@@ -213,7 +221,8 @@ worker_processes <%= node['nginx']['worker'] %>;
     "worker" : 2
   },
   "run_list" :[
-    "nginx"
+    "nginx",
+    "recipe[dch]"
   ]
 }
 ```
