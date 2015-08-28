@@ -8,6 +8,7 @@ categories: Git
 
 http://learnbranch.urigit.com
 https://rogerdudler.github.io/git-guide/index.ko.html
+http://backlogtool.com/git-guide/kr/stepup/stepup1_2.html
 
 ### Branch
 
