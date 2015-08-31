@@ -9,7 +9,8 @@ categories: ruby
 
 ### 기본적으로 get put post 메소드들은 Base 클래스의 클래스 메서드로 정의되어 있음.
 
-http://nicholasjohnson.com/ruby/blog/posts/delegating_with_extend/
+[Delegator](http://nicholasjohnson.com/ruby/blog/posts/delegating_with_extend/)
+[Sinatra Overview](http://neethack.com/2012/02/code-odyssey-sinatra/)
 
 
 ```ruby
