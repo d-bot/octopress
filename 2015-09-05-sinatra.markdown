@@ -1,0 +1,187 @@
+---
+layout: post
+title: "Sinatra"
+date: 2015-09-05 08:17:54 +0000
+comments: true
+categories: ruby
+---
+
+기본적인 디렉토리 구조는 아래와 같다.
+```
+lib/
+    sinatra/
+        base.rb   # All codes are in here
+        main.rb   # Application class, base.rb 에 정의되어 있지만 여기서 다시 패치함.
+
+    sinatra.rb  # Only require 'sinatra/main'
+```
+
+### base.rb 구조
+
+```ruby
+$ cat base.rb |grep -E "^\s*class|^\s*module"
+module Sinatra
+  class Request < Rack::Request
+    class AcceptEntry
+  class Response < Rack::Response
+
+  class ExtendedRack < Struct.new(:app)
+  class CommonLogger < Rack::CommonLogger
+  class NotFound < NameError #:nodoc:
+
+  module Helpers # Helper methods that available in routes, filters and views , handle tasks like redirect, status code, url, html header, session, mime type, http stearming… etc
+    class Stream
+
+  module Templates # Handle multiple template engines using tilt
+    module ContentTyped
+
+  class Base    # 메인 코드 베이스 (위에 정의된 Rack Request,Response/Helpers/Templates 을 포함하며 Handling routes and invoke correspond code blocks and filters
+    class << self
+    class << self
+  class Application < Base # Base 클래스를 상속한다. The run instance of Sinatra application.
+
+  module Delegator # Delegate DSL methods in Top-level file to Sinatra Application.
+    class << self
+  class Wrapper
+```
+
+### main.rb 구조
+
+```ruby
+$ cat main.rb |grep -E "^\s*class|^\s*module"
+module Sinatra
+  class Application < Base # base.rb 에 정의된 Application 클래스를 패치한다. set the hooks to run application at exit and Parse option. Also it includes the delegator to send all methods on Top-level to application.
+
+# include would include the module in Object
+# extend only extends the `main` object
+extend Sinatra::Delegator
+
+class Rack::Builder
+  include Sinatra::Delegator
+end
+```
+
+#### 모듈러 앱으로 사용할때는 `require 'sinatra/base'` 만 로드해서 base 클래스의 서브 클래스로 만들어 사용하는데 이렇게 되면 Application 클래스는 전혀 사용하지 않는게 된다. 즉, Sinatra::Base 는 미들웨어(Middleware), 라이브러리(Libraries), 그리고 모듈 앱(Modular Apps) 으로 구성된 백지 상태의 클래스이나, base.rb 안의 `class Application < Base` 코드를 통해서 기본적인 옵션들이 설정되어 최상위 레벨의 DSL 로 접근이 가능해 진다. (즉, `class MyApp < Sinatra::Base` 이렇게 하면 base.rb 의 `Sinatra::Application` 클래스를 무시하고 내가 새로 재정의하는셈이 된다.)
+
+#### 톱레벨 앱들은 다음 두가지만 수정하면 `Sinatra::Base` 컴포넌트로 변환 가능하다.
+
+* 파일은 `sinatra` 가 아닌 `sinatra/base` 를 require 해야한다. 그렇지 않으면 모든 Sinatra 의 DSL 메서드들이 메인 네임스페이스에 불러지게 됩니다.
+
+* 앱의 라우터, 예외 핸들러, 필터, 옵션은 `Sinatra::Base` 의 서브클래스에 두어야 한다.
+
+```ruby
+require 'sinatra/base'
+
+class Dashboard < Sinatra::Base
+  set :sessions, true
+  set :foo, 'bar'
+
+  get '/' do
+    'Hello world!'
+  end
+end
+```
+
+즉, `Sinatra::Base` 는 백지상태(blank slate) 이며, 빌트인 서버를 비롯한 대부분의 옵션들이 기본값으로 꺼져 있다. (Application 클래스에 정의되어 있음) 가능한 옵션들과 그 작동에 대한 상세는 [옵션과 설정](http://www.sinatrarb.com/configuration.html)을 참고
+
+
+#### 모듈(Modular) vs. 전통적 방식(Classic Style)
+
+일반적인 믿음과는 반대로, 전통적 방식에 잘못된 부분은 없습니다. 여러분 애플리케이션에 맞다면, 모듈 애플리케이션으로 전환할 필요는 없습니다.
+
+모듈 방식이 아닌 전통적 방식을 사용할 경우 생기는 주된 단점은 루비 프로세스 당 하나의 Sinatra 애플리케이션만 사용할 수 있다는 점입니다. 만약 하나 이상을 사용할 계획이라면 모듈 방식으로 전환하세요. 모듈 방식과 전통적 방식을 섞어쓰지 못할 이유는 없습니다.
+
+방식을 전환할 경우에는, 기본값 설정의 미묘한 차이에 유의해야 합니다.
+
+| 설정     |  전통적 방식 | 모듈 |
+|----------|--------------|------|
+|app_file  | sinatra를 로딩하는 파일 | Sinatra::Base를 서브클래싱한 파일 |
+|run       |$0 == app_file  | false |
+|logging   |true  |false |
+|method_override |true  |false |
+|inline_templates |true  |false |
+|static  |true  |false |
+
+
+### 모듈 애플리케이션(Modular Application) 제공하기
+
+모듈 앱을 시작하는 두 가지 일반적인 옵션이 있습니다. run!으로 능동적으로 시작하는 방법은 이렇습니다.
+
+```ruby
+# my_app.rb
+require 'sinatra/base'
+
+class MyApp < Sinatra::Base
+  # ... 여기에 앱 코드가 온다 ...
+
+  # 루비 파일이 직접 실행될 경우에 서버를 시작
+  run! if app_file == $0
+end
+```
+
+이렇게 시작할 수도 있습니다.
+
+```ruby
+ruby my_app.rb
+```
+
+`config.ru` 와 함께 사용할수도 있고 다음 경우에 권장됨.
+* 다른 Rack 핸들러(Passenger, Unicorn, Heroku, ...)로 배포하고자 할 때.
+* 하나 이상의 Sinatra::Base 서브클래스를 사용하고자 할 때.
+* Sinatra를 최종점(endpoint)이 아니라, 오로지 미들웨어로만 사용하고자 할 때.
+
+```ruby
+# config.ru
+require './my_app'
+run MyApp
+# 혹은 run MyApp.new
+```
+
+실행은 이렇게 합니다.
+```ruby
+rackup -p 4567
+```
+
+### 요청/인스턴스 범위
+
+매 요청마다, 애플리케이션 클래스의 새 인스턴스가 생성되고 모든 핸들러 블록은 그 범위 내에서 실행됩니다. 범위 내에서 여러분은 `request` 와 `session` 객체에 접근하거나 erb 나 haml 같은 렌더링 메서드를 호출할 수 있습니다. 요청 범위 내에서 `settings` 헬퍼를 통해 애플리케이션 범위에 접근 가능합니다.
+
+```ruby
+class MyApp < Sinatra::Base
+  # 이봐요, 전 애플리케이션 범위에 있다구요!
+  get '/define_route/:name' do
+    # '/define_route/:name'의 요청 범위
+    @value = 42
+
+    settings.get("/#{params['name']}") do
+      # "/#{params['name']}"의 요청 범위
+      @value # => nil (동일한 요청이 아님)
+    end
+
+    "라우터가 정의됨!"
+  end
+end
+```
+
+요청 범위에는 이런 것들이 있습니다.
+* get/head/post/put/delete/options 블록
+* before/after 필터
+* 헬퍼(helper) 메서드
+* 텝플릿/뷰
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

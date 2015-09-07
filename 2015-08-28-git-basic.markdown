@@ -6,8 +6,8 @@ comments: true
 categories: Git
 ---
 
-[Link1](http://learnbranch.urigit.com)
-[Link2](https://rogerdudler.github.io/git-guide/index.ko.html)
+[Link1](http://learnbranch.urigit.com)<br>
+[Link2](https://rogerdudler.github.io/git-guide/index.ko.html)<br>
 [Link3](http://backlogtool.com/git-guide/kr/stepup/stepup1_2.html)
 
 ### Branch
