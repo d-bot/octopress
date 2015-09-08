@@ -54,9 +54,9 @@ module Sinatra
 
 # include would include the module in Object
 # extend only extends the `main` object
-extend Sinatra::Delegator
+extend Sinatra::Delegator # top-level DSL 에 Delegator 를 extend 한다.
 
-class Rack::Builder
+class Rack::Builder # Rack::Builder 네임스페이스를 오픈하고 Delegator 를 include 한다.
   include Sinatra::Delegator
 end
 ```
