@@ -81,16 +81,16 @@ a --> **A (has not_so_loud)
         Object ----------------> *Object
 
           ^                         ^
-          |                         |
+          | extend                  |
           |                         |
 
-        Human -----------------> *Human
+ Sinatra::Application -----> *Sinatra::Application
 
           ^                         ^
-          |                         |
+          | 상속                    |
           |                         |
 
-        Pirate ----------------> *Pirate
+     Sinatra::Base ---------> *Sinatra::Base
 
 ```
 
