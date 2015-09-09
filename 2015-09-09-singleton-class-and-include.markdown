@@ -67,30 +67,30 @@ a --> **A (has not_so_loud)
 
 
 ```
-          --------------------->  Module
+          -------------------------->  Module
           |
-          |                         ^
-          |                         |
-          |                         |
-          |                       Class
+          |                              ^
+          |                              |
+          |                              |
+          |                            Class
           |
-          |                         ^
-          |                         |
-          |                         |
+          |                              ^
+          |                              |
+          |                              |
 
-        Object ----------------> *Object
+        Object ---------------------> *Object
 
-          ^                         ^
-          | extend                  |
-          |                         |
+          ^                              ^
+          |                              |
+          |                              |
 
- Sinatra::Application -----> *Sinatra::Application
+        Pirate ----------------------> *Pirate
 
-          ^                         ^
-          | 상속                    |
-          |                         |
+          ^                              ^
+          |                              |
+          |                              |
 
-     Sinatra::Base ---------> *Sinatra::Base
+        Human ----------------------> *Human
 
 ```
 
