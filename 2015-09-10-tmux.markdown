@@ -1,0 +1,56 @@
+---
+layout: post
+title: "Tmux"
+date: 2015-09-10 06:27:12 +0000
+comments: true
+categories: tmux
+---
+
+#### 새로운 세션 시작 및 디테치
+
+```
+tmux new -s SESSION_NAME
+Ctrl + j + d
+
+ex)
+
+ dch [6:26:27] >  ~  tmux new -s dylan
+[detached]
+ dch [6:39:05] >  ~  tmux ls
+dylan: 3 windows (created Thu Sep 10 06:26:32 2015) [103x54]
+ dch [6:39:45] >  ~  tmux attach -t dylan
+```
+
+### 명령어들
+
+```
+Create a new window: ^ j c
+
+Change window: ^ j NUMBER or N or W
+
+Change window name: ^ j ,
+
+Split Pane: ^ j | or -
+
+Move Pane: ^ j ARROW OR ^ j q (select pane number) OR ^ j o
+
+Change pane layout: ^ j space
+
+Scroll: ^ j [ (w/ vim shorcuts, q to exit)
+
+Help: ^ j ?
+```
+
+### 세션 공유
+
+```
+# specify the name of your tmux socket with -S when creating it
+$ tmux -S /tmp/pair
+
+# chmod to allow other users to access it
+$ chmod 777 /tmp/pair
+
+# now the other user can connect with
+$ tmux -S /tmp/pair attach
+```
+
