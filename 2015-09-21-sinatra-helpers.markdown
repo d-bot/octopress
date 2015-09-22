@@ -17,33 +17,49 @@ Also take a look how to register extensions
 
 
 ```ruby
-class Base
+require 'pry'
 
-  def self.get
-    puts "psuedo get"
-    yield if block_given?
-  end
+module Cinatra
 
-
-  def self.test
-    puts "test method"
-    yield if block_given?
-  end
-
-  class << self
-
-    # Makes the methods defined in the block and in the Modules given
-    # in `extensions` available to the handlers and templates
-    def helpers(&block)
-      instance_eval(&block) if block_given?
-      # 현재 class 의 scope 안에서 실행되므로 결국은 class << self (Base 의 singleton class) 안에서 인자로 넘>어온 블락은 evaluate 될줄 알았으나 아니었다.
-      # 실상은 현재 스코프(singleton class) 의 객체로 현재 scope 를 evaluate 해서 instalce_eval을 써야 singleton method 로 인식이됨.
+  module Helpers
+     # Methods available to routes, before/after filters, and views.
+    def blah
+      puts "blah~"
     end
   end
 
+  class Base
+
+    #include Rack::Utils
+    include Helpers
+    #include Templates
+
+    def self.test
+      puts "test method"
+    end
+
+    class << self
+      def get
+        puts "psuedo get"
+        yield if block_given?
+      end
+
+      # Makes the methods defined in the block and in the Modules given
+      # in `extensions` available to the handlers and templates
+      def helpers(&block)
+        instance_eval(&block) if block_given?
+        # 현재 class 의 scope 안에서 실행되므로 결국은 class << self (Base 의 singleton class) 안에서 인자로 넘어온 블락은 evaluate 될줄 알았으나 아니었다.
+        # 실상은 현재 스코프(singleton class) 의 객체로 현재 scope 를 evaluate 해서 instalce_eval을 써야 singleton method 로 인식이됨.
+        # class_eval is a method of the Module class, meaning that the receiver will be a module or a class. The block you pass to class_eval is evaluated in the context of that class. Defining a method with the standard def keyword within a class defines an instance method.
+        binding.pry
+      end
+    end
+  end # End of Base
+
 end
 
-class MyTest < Base
+
+class MyTest < Cinatra::Base
 
   helpers do
 
@@ -58,7 +74,7 @@ class MyTest < Base
 
   get do
     test
-    inside_helper
+    self.inside_helper
   end
 
 end
