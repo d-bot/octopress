@@ -91,10 +91,14 @@ end
 From global scope we can now simply do this:
 
 ```ruby
+# include would include the module in Object
+# extend only extends the `main` object
 extend Sinatra::Delegator
 ```
 
 This will extend the global scope object (pointed to by self) with the methods in the mixin. We can now call all of these methods on the global scope, and the delegator will forward them nicely onto the `Application` class.
+
+즉 위와 같이 `extend` 를 사용함으로써 Object 클래스의 singleton 클래스의 hierarchy 에 함수들이 include 되고 global scope 에서는 실제 singleton hierarchy 에 정의된 함수를 호출한다. `include` 를 사용해도 동작하는것은 OOP 스타일이 아닌 scripting 스타일의 개념안에서 `Object` 클래스안으로 함수들이 include 되기 때문이다.
 
 
 
