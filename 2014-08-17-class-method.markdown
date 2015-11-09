@@ -6,11 +6,15 @@ comments: true
 categories: Ruby
 ---
 
+[참고](https://www.reddit.com/r/ruby/comments/3s4661/class_method_when_and_why/)
+
 ### 클래스 메서드는 해당 클래스로부터 생성되는 객체의 interface or responsibilities 에 속할 필요가 없는 행동들을 정의하는데 사용한다.
 
 ### 클래스 메서드들이 클래스 바디에서 실행(호출)되는 것은 아이언맨이 싸우기전 수트를 착용하는 과정같음. 아이언맨 전투는 Ironman.new 로 객체를 생성하면서 실제 시작
 
 ### 혹은 아래와 같이 Macro 로 사용한다. 여기서 눈여겨 봐야할부분은 class body 도 클래스 메서드를 호출하며 코드를 실행한다는 부분
+
+### `new` 도 결국 클래스 메소드임. 클래스자체의 특정 행위가 필요할때 사용해야함. `Test.new` or `Test.set(name="Application")`
 
 ```ruby
 module Macro
