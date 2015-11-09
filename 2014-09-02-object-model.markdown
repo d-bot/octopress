@@ -6,6 +6,8 @@ comments: true
 categories: Ruby
 ---
 
+[Object Model](http://www.toptal.com/ruby/ruby-metaprogramming-cooler-than-it-sounds)
+
 메타 프로그래밍 관점에서 class 키워드는 클래스 정의보다는 scope 지정 키워드로서 더 의미가 깊다.
 
 ```ruby
