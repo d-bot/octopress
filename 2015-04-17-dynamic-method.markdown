@@ -6,6 +6,13 @@ comments: true
 categories: Ruby
 ---
 
+## When to use `send`
+
+When calling a method with abnormal name
+When dynamically changing a method to call
+When calling a method from outside of scope
+
+
 일반적인 메소드 콜은 컴파일러가 해당되는 method 가 콜을 받는 객체에 매칭되는 method 가 있는지 검사하는데 이것을 static type checking 이라고 한다. 이러한 static type checking 때문에 tedious 코드를 많이 생산하게 되는데 dynamic languages(python, ruby) 등에는 해당 이슈가 없다.
 
 코드를 줄이는 방법 2가지: Dynamic methods & Dynamic dispatch OR method_missing

@@ -90,3 +90,51 @@ rescue InvalidRecordError => e
   # Send record to support staff...
 end
 ```
+
+[Exeption](http://best-ruby.com/best_practices/using_exception_e.html)
+
+`rescue => e` 만 쓰면 기본적으로 `StandardError` exception 만 잡히고 다른 exception 들을 잡지 못하므로 모든 exception 을 잡으려면 `rescue Exception => e` 이런식으로 잡아야 한다.
+
+```ruby
+loop do
+  begin
+    sleep 1
+  rescue Exception => e
+    puts "I'm STRONGER. Give up!"
+  end
+end
+
+# Run and try CTRL+C
+```
+
+### Exception hierarchy
+```ruby
+Exception
+  NoMemoryError
+  ScriptError
+    LoadError
+    NotImplementedError
+    SyntaxError
+  SignalException
+    Interrupt
+  StandardError
+    ArgumentError
+    IOError
+      EOFError
+    IndexError
+    LocalJumpError
+    NameError
+      NoMethodError
+    RangeError
+      FloatDomainError
+    RegexpError
+    RuntimeError
+    SecurityError
+    SystemCallError
+    SystemStackError
+    ThreadError
+    TypeError
+    ZeroDivisionError
+  SystemExit
+  fatal
+```

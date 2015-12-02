@@ -28,6 +28,8 @@ end
 
 넘기는 블락이 지정된 스코프 안에서 실행된다. (instance_eval, class_eval, module_eval)
 
+eval() can be dangerous. If there's any chance that external data - stuff that comes from outside your application - can wind up inside the parameter to eval(), then you have a security hole, because that external data may end up containing arbitrary code that your application will blindly execute. eval() is now considered a method of last resort.
+
 ```ruby
 def my_method
 	x = 10

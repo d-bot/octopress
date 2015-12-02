@@ -6,6 +6,8 @@ comments: true
 categories: Ruby
 ---
 
+[Array TIL](http://blog.honeybadger.io/ruby-splat-array-manipulation-destructuring/?utm_source=twitter&utm_medium=social&utm_campaign=blogpost)
+
 ### Just read
 http://ppss.kr/archives/48436
 
