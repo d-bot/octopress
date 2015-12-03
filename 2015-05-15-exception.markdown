@@ -93,7 +93,7 @@ end
 
 [Exeption](http://best-ruby.com/best_practices/using_exception_e.html)
 
-`rescue => e` 만 쓰면 기본적으로 `StandardError` exception 만 잡히고 다른 exception 들을 잡지 못하므로 모든 exception 을 잡으려면 `rescue Exception => e` 이런식으로 잡아야 한다. 그러나 `rescue Exception = e` 를 하면Exception Hierarchy 의 최상위 예외를 잡게되므로 syntax 에러(SyntaxError) 나 load 에러 (LoadError) 나 Interrupt 에러(Control + C 로 발생시키는 인터럽트까지 rescue 해버려서 프로그램 종료도 못시킴, 아래 예제로 테스트해보셈). 까지 잡을 수 없게 되므로 그리 추천하지 않는 rescue 방식이다. [추천하지 않는 이유](http://stackoverflow.com/questions/10048173/why-is-it-bad-style-to-rescue-exception-e-in-ruby)
+`rescue => e` 만 쓰면 기본적으로 `StandardError` exception 만 잡히고 다른 exception 들을 잡지 못하므로 모든 exception 을 잡으려면 `rescue Exception => e` 이런식으로 잡아야 한다. 그러나 `rescue Exception = e` 를 하면Exception Hierarchy 의 최상위 예외를 잡게되므로 syntax 에러(SyntaxError) 나 load 에러 (LoadError) 나 Interrupt 에러(Control + C 로 발생시키는 인터럽트까지 rescue 해버려서 loop 안에서 `rescue Exception => e` 를 사용하면 프로그램 종료도 못시킴, 아래 예제로 테스트해보셈). 까지 잡을 수 없게 되므로 그리 추천하지 않는 rescue 방식이다. [추천하지 않는 이유](http://stackoverflow.com/questions/10048173/why-is-it-bad-style-to-rescue-exception-e-in-ruby)
 
 ```ruby
 loop do
