@@ -20,7 +20,7 @@ class Test
     end
 
     def vision
-        puts @asdf
+        puts @asdf  # @ 없이 asdf 가 호출되면 에러남.
     end
 end
 
