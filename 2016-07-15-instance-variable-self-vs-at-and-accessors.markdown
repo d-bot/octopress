@@ -28,24 +28,39 @@ a = Test.new
 a.vision
 ```
 
-`@` 가 `attr_*` 와 함께 선언되면 해당 변수는 `@` 없이 호출가능하다.
+`@` 가 `attr_accessor` 와 함께 선언되면 해당 변수는 `@` 없이 호출가능하다. attr_reader 는 안됨!
 
 ```ruby
 class Test
-  attr_reader :asdf
+  attr_reader :asdf, :zxcv
 
-    def initialize
-        @asdf = 1
-        qwer = 2
-    end
+  def initialize
+      @asdf = 1
+      qwer = 2
+      @zxcv = nil
+  end
 
-    def vision
-        puts asdf   # @ 가 없이 asdf 변수가 호출되었음에 주목
-    end
+  def vision
+      puts asdf   # @ 가 없이 asdf 변수가 호출되었음에 주목
+      #zxcv = 10   # @zxcv 에 10 을 할당하는게 아니라 zxcv 라는 로칼 변수에 값을 할당하는것으로 보임.
+      puts zxcv   # 아무것도 출력 안됨. 즉, zxcv 는 empty 변수 (선언도 안했는데 에러는 왜 안나지)
+  end
+
+  def final
+    puts @zxcv.class.name
+    puts zxcv.class.name
+  end
 end
 
 a = Test.new
-a.visio
+a.vision
+a.final
+
+# $ ruby test.rb
+1
+
+NilClass
+NilClass
 ```
 
 
